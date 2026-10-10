@@ -56,6 +56,20 @@ ${cmd}
 </div></article>`;
 }
 
+
+const ICONS = {
+  gallery: '<path d="M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z"/>',
+  compare: '<path d="M12 3v18M5 7h14M5 7l-3 8a3 3 0 0 0 6 0zM19 7l-3 8a3 3 0 0 0 6 0z"/>',
+  github: '<path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/>',
+  home: '<path d="M3 11l9-8 9 8M5 10v10h14V10"/>',
+  moon: '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+  collapse: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16"/>',
+  menu: '<path d="M4 6h16M4 12h16M4 18h16"/>',
+  close: '<path d="M6 6l12 12M18 6 6 18"/>',
+  filter: '<path d="M3 5h18l-7 8v6l-4 2v-8z"/>',
+};
+const icon = (n) => `<svg class="ic" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">${ICONS[n]}</svg>`;
+
 const alts = projects.filter((p) => p.kind === "alternative");
 const table = `<table class="cmp"><thead><tr><th scope="col">Replaces</th><th scope="col">Their price</th><th scope="col">Typical run on looot, list price</th><th scope="col">Repo</th></tr></thead><tbody>
 ${alts
@@ -95,11 +109,31 @@ const html = `<!doctype html>
 </head>
 <body>
 <a class="skip" href="#gallery">Skip to the gallery</a>
-<header class="top"><div class="wrap topin">
-<a class="brand" href="${site.home}" aria-label="looot home"><img class="wm wm-light" src="brand/looot-wordmark-1024.png" width="765" height="148" alt="looot"><img class="wm wm-dark" src="brand/looot-wordmark-white-1024.png" width="765" height="148" alt=""></a>
-<nav class="nav" aria-label="Main"><a href="#gallery">Gallery</a><a href="#compare">Replace vs cost</a><a href="${site.org}">GitHub</a><a href="${site.home}">looot.ai</a>
-<button type="button" id="theme" class="icon" aria-label="Switch theme"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M12 3a9 9 0 1 0 9 9c0-.5 0-1-.1-1.4A5.5 5.5 0 0 1 12.4 3.1C12.3 3 12.1 3 12 3z"/></svg></button></nav>
-</div></header>
+<header class="topbar"><button type="button" id="menu" class="icon" aria-label="Open navigation" aria-expanded="false" aria-controls="sidebar">${icon("menu")}</button>
+<a class="brand" href="${site.home}" aria-label="looot home"><img class="wm wm-light" src="brand/looot-wordmark-1024.png" width="765" height="148" alt="looot"><img class="wm wm-dark" src="brand/looot-wordmark-white-1024.png" width="765" height="148" alt=""></a></header>
+<div class="scrim" id="scrim" hidden></div>
+<div class="layout" id="layout">
+<aside id="sidebar" class="side" aria-label="Sidebar">
+<div class="sidehead"><a class="sidebrand" href="${site.home}" aria-label="looot home"><img class="smark" src="brand/looot-mark.svg" width="28" height="28" alt=""><img class="swm" src="brand/looot-wordmark-white-1024.png" width="765" height="148" alt="looot"></a><button type="button" id="close" class="icon sideclose" aria-label="Close navigation">${icon("close")}</button></div>
+<nav class="sidenav" aria-label="Main"><a class="sl" href="#gallery" title="Gallery">${icon("gallery")}<span class="lb">Gallery</span></a><a class="sl" href="#compare" title="Replace vs cost">${icon("compare")}<span class="lb">Replace vs cost</span></a></nav>
+<div class="filters" id="filters">
+<p class="sh lb">Find a repo</p>
+<label class="search"><span class="sr">Search the gallery</span><input id="q" type="search" placeholder="Name or what it replaces" autocomplete="off"></label>
+<p class="sh lb">Group</p>
+<div class="chips" role="group" aria-label="Filter by group"><button type="button" class="chip" data-g="" aria-pressed="true">All <i>${counts.all}</i></button>${groups
+  .map((g) => `<button type="button" class="chip" data-g="${esc(g)}" aria-pressed="false">${esc(g)} <i>${projects.filter((p) => p.group === g).length}</i></button>`)
+  .join("")}</div>
+<button type="button" class="btn show-results" id="show">Show results</button>
+</div>
+<div class="sidefoot">
+<button type="button" class="sl railbtn" id="rail-filters" title="Search and filters" aria-label="Open search and filters">${icon("filter")}<span class="lb">Search and filters</span></button>
+<a class="sl" href="${site.org}" title="GitHub">${icon("github")}<span class="lb">GitHub</span></a>
+<a class="sl" href="${site.home}" title="looot.ai">${icon("home")}<span class="lb">looot.ai</span></a>
+<button type="button" id="theme" class="sl" title="Switch theme" aria-label="Switch theme">${icon("moon")}<span class="lb">Switch theme</span></button>
+<button type="button" id="collapse" class="sl collapsebtn" aria-label="Collapse sidebar" aria-pressed="false" title="Collapse sidebar">${icon("collapse")}<span class="lb">Collapse</span></button>
+</div>
+</aside>
+<div class="content">
 <main>
 <section class="hero"><div class="wrap">
 <p class="eyebrow">Built on looot</p>
@@ -111,13 +145,7 @@ const html = `<!doctype html>
 
 <section id="gallery" class="wrap sec" aria-labelledby="gh">
 <h2 id="gh">Gallery</h2>
-<div class="controls">
-<label class="search"><span class="sr">Search the gallery</span><input id="q" type="search" placeholder="Search by name or what it replaces" autocomplete="off"></label>
-<div class="chips" role="group" aria-label="Filter by group"><button type="button" class="chip" data-g="" aria-pressed="true">All <i>${counts.all}</i></button>${groups
-  .map((g) => `<button type="button" class="chip" data-g="${esc(g)}" aria-pressed="false">${esc(g)} <i>${projects.filter((p) => p.group === g).length}</i></button>`)
-  .join("")}</div>
 <p id="count" class="count" aria-live="polite">Showing ${counts.all} of ${counts.all}</p>
-</div>
 <div class="grid" id="grid">
 ${projects.map(card).join("\n")}
 </div>
@@ -132,6 +160,8 @@ ${table}
 </section>
 </main>
 <footer class="foot"><div class="wrap footin"><p>MIT licence, copyright looot. Screenshots show demo data. <a href="${site.home}">looot.ai</a> · <a href="${site.org}">github.com/loootai</a> · <a href="https://github.com/loootai/showcase">Add a repo</a></p></div></footer>
+</div>
+</div>
 <script src="app.js" defer></script>
 </body>
 </html>
