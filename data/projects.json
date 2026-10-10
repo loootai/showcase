@@ -291,6 +291,27 @@
       "release": "v0.1.0"
     },
     {
+      "id": "looot-warm-leads",
+      "name": "looot-warm-leads",
+      "title": "looot-warm-leads",
+      "repo": "https://github.com/loootai/looot-warm-leads",
+      "kind": "alternative",
+      "group": "Open-source alternatives",
+      "summary": "Warm B2B leads from LinkedIn intent signals on one looot key: explainable scores, verified emails, drafted messages, CSV and Instantly export. LinkedIn sending is optional, off by default, and goes through your own Unipile account.",
+      "replaces": "Gojiberry",
+      "replacesPrice": {
+        "text": "Pro plan $99 a month",
+        "basis": "listed",
+        "note": "From Gojiberry's home page. Its pricing page returned 404. Read 2026-10-10."
+      },
+      "costOfRun": "At most $0.25 for 3 competitor pages, 2 creators and 3 keywords (new role only), or $0.65 with hiring and funding triggers for up to 20 companies.",
+      "command": "git clone https://github.com/loootai/looot-warm-leads.git && cd looot-warm-leads && npm ci --ignore-scripts && npm run demo",
+      "commandLabel": "Run the demo",
+      "image": "img/looot-warm-leads.webp",
+      "imageNote": "Demo data, not a real account",
+      "release": "v0.1.0"
+    },
+    {
       "id": "looot-mcp",
       "name": "looot-mcp",
       "title": "looot-mcp",
