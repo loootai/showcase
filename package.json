@@ -1,0 +1,15 @@
+{
+  "name": "looot-showcase",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Static showcase of everything built on looot. No dependencies.",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check-links.mjs",
+    "check:external": "node scripts/check-links.mjs --external",
+    "scan": "bash scripts/leak-scan.sh ."
+  },
+  "engines": { "node": ">=20" }
+}
