@@ -360,6 +360,18 @@
       "tests": null
     },
     {
+      "id": "reverse-engineer",
+      "name": "reverse-engineer",
+      "title": "reverse-engineer",
+      "repo": "https://github.com/loootai/reverse-engineer",
+      "kind": "connector",
+      "group": "Agent tools",
+      "summary": "Eight skills that take a product apart from public evidence, rebuild it on looot and request the data sources that are missing. Includes a starter app and three case studies.",
+      "command": "npx skills@1.7.0 add loootai/reverse-engineer",
+      "commandLabel": "Install",
+      "tests": null
+    },
+    {
       "id": "n8n-nodes-looot",
       "name": "n8n-nodes-looot",
       "title": "n8n-nodes-looot",
