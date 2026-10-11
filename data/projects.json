@@ -77,20 +77,20 @@
       "repo": "https://github.com/loootai/looot-intent",
       "kind": "alternative",
       "group": "Open-source alternatives",
-      "summary": "Open-source alternative to 6sense: account intent and buying-stage scoring on looot. Ranked accounts, explainable score by provider, cost shown before every run. Next.js, CLI, demo mode.",
+      "summary": "Open-source alternative to 6sense: account intent and buying-stage scoring on looot, with third-party buying intent from TheirStack. Ranked accounts, explainable score by provider, cost shown before every run. Next.js, CLI, demo mode.",
       "replaces": "6sense",
       "replacesPrice": {
         "text": "About $25,000 a year for paid plans",
         "basis": "estimate",
         "note": "Third-party trackers' estimate. 6sense publishes no paid price. Read 2026-10-10."
       },
-      "costOfRun": "$0.1765 per account at list price. 25 accounts cost $4.41.",
+      "costOfRun": "$0.27006 per account at list price with all 11 signals. 25 accounts cost $6.75.",
       "command": "git clone https://github.com/loootai/looot-intent && cd looot-intent && npm install --ignore-scripts && npm run demo",
       "commandLabel": "Run the demo",
       "image": "img/looot-intent.webp",
       "imageNote": "Demo data, not a real account",
       "tests": null,
-      "release": "v0.1.0"
+      "release": "v0.1.5"
     },
     {
       "id": "looot-score",
@@ -165,20 +165,20 @@
       "repo": "https://github.com/loootai/looot-signals",
       "kind": "alternative",
       "group": "Open-source alternatives",
-      "summary": "Open-source signal feed: hiring, funding, news and leadership triggers with an evidence link per signal. CSV and webhook export, headless CLI. Next.js and looot.",
+      "summary": "Open-source signal feed: hiring, funding, news and leadership triggers with an evidence link per signal. Funding triggers return founders and investors at $0.05 a lookup. CSV and webhook export, headless CLI. Next.js and looot.",
       "replaces": "TheirStack and Harmonic signal feeds",
       "replacesPrice": {
         "text": "TheirStack API plans from $49 a month",
         "basis": "listed",
         "note": "Public pricing page, read 2026-10-10. Harmonic shows no public price."
       },
-      "costOfRun": "At most $0.531 per run of the five example triggers.",
+      "costOfRun": "At most $0.731 per run of the five example triggers, founders and investors included.",
       "command": "git clone https://github.com/loootai/looot-signals && cd looot-signals && npm install --ignore-scripts && npm run demo",
       "commandLabel": "Run the demo",
       "image": "img/looot-signals.webp",
       "imageNote": "Demo data, not a real account",
       "tests": 52,
-      "release": "v0.1.0"
+      "release": "v0.1.4"
     },
     {
       "id": "looot-lookalike",
@@ -209,20 +209,20 @@
       "repo": "https://github.com/loootai/looot-ads",
       "kind": "alternative",
       "group": "Open-source alternatives",
-      "summary": "Open-source competitor ad board: Meta, Google, LinkedIn and TikTok ad libraries in one view, with angles and offers per competitor. Price shown before every run. Next.js and looot.",
+      "summary": "Open-source competitor ad board: Meta, Google, LinkedIn and TikTok ad libraries in one view, plus keyword discovery on Meta, LinkedIn, TikTok and Reddit, with angles and offers per competitor. Price shown before every run. Next.js and looot.",
       "replaces": "Foreplay",
       "replacesPrice": {
         "text": "From $49 a month billed annually, $59 monthly",
         "basis": "listed",
         "note": "Public pricing page, read 2026-10-10."
       },
-      "costOfRun": "About $0.11 to pull five competitors across four platforms.",
+      "costOfRun": "About $0.05 to pull five competitors across four platforms. A keyword search on five platforms is about $0.01.",
       "command": "git clone https://github.com/loootai/looot-ads && cd looot-ads && npm install --ignore-scripts && npm run demo",
       "commandLabel": "Run the demo",
       "image": "img/looot-ads.webp",
       "imageNote": "Demo data, not a real account",
       "tests": null,
-      "release": "v0.1.0"
+      "release": "v0.1.5"
     },
     {
       "id": "looot-reviews",
@@ -275,20 +275,20 @@
       "repo": "https://github.com/loootai/looot-mentions",
       "kind": "alternative",
       "group": "Open-source alternatives",
-      "summary": "Open-source alternative to Brand24 and Mention: brand and keyword listening across Reddit, X, Hacker News, news, YouTube and the web, with sentiment, intent and a daily digest. Next.js and looot.",
+      "summary": "Open-source alternative to Brand24 and Mention: brand and keyword listening across Reddit, X, Hacker News, news, YouTube, TikTok, Instagram and the web, with sentiment, intent and a daily digest. Next.js and looot.",
       "replaces": "Brand24 and Mention",
       "replacesPrice": {
         "text": "Brand24 Individual: $249 a month, $199 billed yearly",
         "basis": "listed",
         "note": "Brand24 pricing page, read 2026-10-10. Mention showed no figure."
       },
-      "costOfRun": "$0.00663 per keyword on all six sources. 3 keywords daily is about $0.60 a month.",
+      "costOfRun": "$0.01001 per keyword on all eight sources. 3 keywords daily is about $0.90 a month.",
       "command": "git clone https://github.com/loootai/looot-mentions && cd looot-mentions && npm install && npm run demo",
       "commandLabel": "Run the demo",
       "image": "img/looot-mentions.webp",
       "imageNote": "Demo data, not a real account",
       "tests": null,
-      "release": "v0.1.0"
+      "release": "v0.1.5"
     },
     {
       "id": "looot-warm-leads",
