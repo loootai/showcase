@@ -777,6 +777,28 @@
       "command": "git clone https://github.com/loootai/looot-tables.git",
       "commandLabel": "Install",
       "tests": null
+    },
+    {
+      "id": "looot-network",
+      "name": "looot-network",
+      "title": "looot-network",
+      "repo": "https://github.com/loootai/looot-network",
+      "kind": "alternative",
+      "group": "Open-source alternatives",
+      "summary": "Open-source alternative to Happenstance: search your own network in plain language. Import LinkedIn, Google Contacts or any CSV into your Supabase, then optionally enrich through looot with the price shown first. Next.js, CLI, demo mode.",
+      "replaces": "Happenstance",
+      "replacesPrice": {
+        "text": "$24 a month billed yearly (Pro), $24 per seat a month (Team), Free at $0",
+        "basis": "listed",
+        "note": "happenstance.ai/pricing, read 2026-10-12."
+      },
+      "costOfRun": "$0.12 for 100 LinkedIn profiles, $0.3598 for 100 work emails, $0.0019 per company domain, at list price.",
+      "command": "git clone https://github.com/loootai/looot-network && cd looot-network && npm install --ignore-scripts && npm run demo",
+      "commandLabel": "Run the demo",
+      "image": "img/looot-network.webp",
+      "imageNote": "Demo data, not a real account",
+      "tests": 217,
+      "release": "v0.1.0"
     }
   ]
 }
